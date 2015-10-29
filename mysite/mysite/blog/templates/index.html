@@ -1,8 +1,14 @@
   {% extends "base.html" %}
   {% block content %}
+  <a href="http://127.0.0.1:8000/add">新建博客</a>
   {% for post in posts %}
-  <h2>{{  post.title }}</h2>
+
+
+  <h2>{{  post.title }}<a href=""></a> </h2>
   <p>{{ post.timestamp | date:"1,F jS"}}</p>
   <p>{{ post.body }}</p>
+
+  <br>
+  <a href="http://127.0.0.1:8000/detail">查看详情</a>
   {% endfor %}
   {% endblock %}
