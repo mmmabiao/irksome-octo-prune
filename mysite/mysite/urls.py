@@ -24,6 +24,5 @@ urlpatterns = patterns('',
     url(r'^$', 'mysite.blog.views.index'),
     url(r'^index/$', 'mysite.blog.views.index'),
     url(r'^blog/', include('mysite.blog.urls')),
-    url(r'^online/', include('mysite.online.urls')),
     url(r'^add/', 'mysite.blog.views.create_blog'),
 )

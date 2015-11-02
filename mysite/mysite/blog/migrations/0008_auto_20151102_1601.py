@@ -7,11 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('online', '0002_blogspost'),
+        ('blog', '0007_auto_20151102_1410'),
     ]
 
     operations = [
-        migrations.DeleteModel(
-            name='BlogsPost',
+        migrations.AlterField(
+            model_name='comment',
+            name='ctime',
+            field=models.DateTimeField(auto_now=True, null=True),
         ),
     ]
