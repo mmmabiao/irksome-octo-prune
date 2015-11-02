@@ -12,9 +12,7 @@ from django.template import RequestContext
 
 def index(request):
 	posts = BlogsPost.objects.all()
-	t = django.template.loader.get_template("index.html")
-	c = django.template.Context({'posts': posts})
-	return HttpResponse(t.render(c))
+	return render_to_response('index.html', {'posts': posts}, context_instance=RequestContext(request))
 
 
 # @login_required(login_url='/online/login/')
@@ -24,9 +22,8 @@ def create_blog(request):
 		if form.is_valid():
 			title = form.cleaned_data['title']
 			body = form.cleaned_data['body']
-			timestamp = form.cleaned_data['timestamp']
-			BlogsPost.objects.create(title=title, body=body, timestamp=timestamp)
-			return HttpResponse('create blog success!!')
+			BlogsPost.objects.create(title=title, body=body, )
+			return index(request)
 	else:
 		form = BlogsPostForm()
 	return render_to_response('create_blog.html', {'form': form}, context_instance=RequestContext(request))
@@ -34,7 +31,8 @@ def create_blog(request):
 
 def detail(request, pk):
 	blog = BlogsPost.objects.get(id=pk)
-	return render_to_response('detail.html', {'blog': blog}, context_instance=RequestContext(request))
+	mm = Comment.objects.all()
+	return render_to_response('detail.html', {'blog': blog, 'mm': mm}, context_instance=RequestContext(request))
 
 
 def comment(request, pk):
