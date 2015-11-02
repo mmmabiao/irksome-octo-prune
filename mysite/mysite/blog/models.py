@@ -16,4 +16,11 @@ class BlogPostAdmin(admin.ModelAdmin):
 	class Meta:
 		ordering = ('-timestamp',)
 
+
+class Comment(models.Model):
+	comment = models.TextField()
+	bid = models.IntegerField()
+# uid = models.ForeignKey(User)
+
+
 admin.site.register(BlogsPost, BlogPostAdmin)

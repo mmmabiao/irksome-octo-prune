@@ -7,8 +7,9 @@
   <h2>{{  post.title }}<a href=""></a> </h2>
   <p>{{ post.timestamp | date:"1,F jS"}}</p>
   <p>{{ post.body }}</p>
+  <p>{{ post.user }}</p>
 
   <br>
-  <a href="http://127.0.0.1:8000/detail">查看详情</a>
+  <a href="http://127.0.0.1:8000/blog/{{post.id}}">查看详情</a>
   {% endfor %}
   {% endblock %}
