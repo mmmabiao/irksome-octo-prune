@@ -15,11 +15,19 @@
 <p>{{ blog.timestamp | date:"1,F jS"}}</p>
 <p>{{blog.user}}</p>
 
-<h2>评论：           <a href="http://127.0.0.1:8000/blog/{{ blog.id }}/comment/">添加评论</a></h2>
+<h2>评论：           添加评论：
+
+<form method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="ok"/>
+</form>
+<br></h2>
 {% for a in mm  %}
 {% if a.bid == blog.id %}
 <p>{{a.comment}},{{a.ctime}}</p>
 {% endif %}
+
 {% endfor %}
 
 {% endblock %}
