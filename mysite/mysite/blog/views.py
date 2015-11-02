@@ -1,5 +1,3 @@
-import django.template
-from django.http import HttpResponse, HttpResponseRedirect
 # from django.contrib.auth.decorators import login_required
 from mysite.blog.models import BlogsPost, Comment
 from .forms import BlogsPostForm, CommentForm
@@ -41,7 +39,7 @@ def comment(request, pk):
 		form = CommentForm(request.POST)
 		if form.is_valid():
 			a = form.cleaned_data['comment']
-			Comment.objects.create(comment=a, bid=s.id,)
+			Comment.objects.create(comment=a, bid=s.id, )
 			return detail(request, s.id)
 	else:
 		form = CommentForm()

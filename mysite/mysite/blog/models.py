@@ -20,6 +20,9 @@ class BlogPostAdmin(admin.ModelAdmin):
 class Comment(models.Model):
 	comment = models.TextField()
 	bid = models.IntegerField()
+	ctime = models.DateTimeField(auto_now=True)
+
+
 # uid = models.ForeignKey(User)
 
 

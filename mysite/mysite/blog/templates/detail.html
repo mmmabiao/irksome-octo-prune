@@ -14,13 +14,14 @@
 <p>{{ blog.body }}</p>
 <p>{{ blog.timestamp | date:"1,F jS"}}</p>
 <p>{{blog.user}}</p>
-<h2>评论：</h2>
+
+<h2>评论：           <a href="http://127.0.0.1:8000/blog/{{ blog.id }}/comment/">添加评论</a></h2>
 {% for a in mm  %}
 {% if a.bid == blog.id %}
-<p>{{a.comment}}</p>
+<p>{{a.comment}},{{a.ctime}}</p>
 {% endif %}
 {% endfor %}
-<a href="http://127.0.0.1:8000/blog/{{ blog.id }}/comment/">评论</a>
+
 {% endblock %}
 </body>
 </html>
